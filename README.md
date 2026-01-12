@@ -74,6 +74,7 @@ com.amazonaws.<region>.ssmmessages
 - Enable: ✅ Private DNS
 
 - Security Group: create one SG like: ssm-endpoint-sg
+
 Inbound:
 ```
 HTTPS (443) → Source: 192.168.0.0/24
