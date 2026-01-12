@@ -60,14 +60,30 @@ No Public IPs
   - `AmazonSSMManagedInstanceCore`
 
 ### Systems Manager (SSM)
-Used to connect to private EC2 instances without SSH or public IP.
+Used to connect to private EC2 instances (Consumer EC2) without SSH or public IP.
 
-Interface endpoints required:
+- Interface endpoints required:
 ```
 com.amazonaws.<region>.ssm
 com.amazonaws.<region>.ec2messages
 com.amazonaws.<region>.ssmmessages
 ```
+- VPC: consumer-vpc
+- Subnet: consumer-private-subnet
+- Endpoint type: Interface
+- Enable: ✅ Private DNS
+
+- Security Group: create one SG like: ssm-endpoint-sg
+Inbound:
+```
+HTTPS (443) → Source: 192.168.0.0/24
+```
+Outbound:
+```
+All traffic → 0.0.0.0/0
+```
+
+
 ### 🌐 Temporary Use of NAT Gateway (Bootstrapping Only)
 
 During the initial setup of the backend EC2 instance in the Provider VPC, a **NAT Gateway** was used temporarily to allow outbound internet access for installing required packages (like Apache HTTP Server) via user data.
