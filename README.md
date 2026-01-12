@@ -1,5 +1,8 @@
 # Project-4-Private-Service-Exposure-using-VPC-Endpoint-PrivateLink-with-Network-Load-Balancer
-This project demonstrate the use of VPC endpoint exposing private service with NLB without having public IP, Internet, NAT gatewat. All traffic stays inside AWS network.
+This project demonstrate the use of VPC endpoint exposing private service with NLB without having public IP, Internet, NAT gateway. All traffic stays inside AWS network.
+
+---
+
 # 🔐 Private Service Exposure Using VPC Endpoint (PrivateLink) with Network Load Balancer
 
 This project demonstrates how to expose a private service running in one VPC to another VPC using **AWS PrivateLink** and a **Network Load Balancer (NLB)** without using the public internet, Internet Gateway, or NAT Gateway at runtime.
@@ -24,6 +27,7 @@ Consumer VPC                          Provider VPC
 ```
 Flow:
 Consumer EC2 → Interface VPC Endpoint → AWS PrivateLink → Internal NLB → Backend EC2
+
 The architecture consists of two VPCs: a Provider VPC that hosts a private application behind an internal Network Load Balancer, and a Consumer VPC that accesses this application through an Interface VPC Endpoint using AWS PrivateLink.
 All communication happens over the AWS private backbone, with no dependency on Internet Gateway or NAT Gateway during runtime.
 A NAT Gateway is used only during the provisioning phase to allow the backend EC2 instance to install required software packages.
