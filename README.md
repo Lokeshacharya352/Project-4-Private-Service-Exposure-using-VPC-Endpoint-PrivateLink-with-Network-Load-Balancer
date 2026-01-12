@@ -28,6 +28,12 @@ Consumer VPC                          Provider VPC
 Flow:
 Consumer EC2 → Interface VPC Endpoint → AWS PrivateLink → Internal NLB → Backend EC2
 
+---
+
+## Architecture Diagram
+
+![VPC Architecture](diagrams/project4-vpc-endpoint-privatelink.png)
+
 The architecture consists of two VPCs: a Provider VPC that hosts a private application behind an internal Network Load Balancer, and a Consumer VPC that accesses this application through an Interface VPC Endpoint using AWS PrivateLink.
 All communication happens over the AWS private backbone, with no dependency on Internet Gateway or NAT Gateway during runtime.
 A NAT Gateway is used only during the provisioning phase to allow the backend EC2 instance to install required software packages.
